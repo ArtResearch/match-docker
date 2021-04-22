@@ -4,6 +4,36 @@
 
 <p align="center"><a href="https://github.com/dsys/match/stargazers"><img src="https://img.shields.io/github/stars/dsys/match.svg?style=flat" alt="GitHub stars" /></a> <a href="https://hub.docker.com/r/dsys/match/"><img src="https://img.shields.io/docker/pulls/dsys/match.svg" alt="Docker Pulls" /></a> <a href="http://kubernetes.io"><img src="https://img.shields.io/badge/kubernetes-ready-brightgreen.svg?style=flat" alt="Kubernetes shield" /></a> <a href="https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fdsys%2Fmatch?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fdsys%2Fmatch.svg?type=shield"/></a></p>
 
+
+Test queries:
+
+
+```
+WORKING:
+curl -X POST -F 'url=https://iiif.itatti.harvard.edu/iiif/2/yashiro!letters-jp!letter_001.pdf/full/full/0/default.jpg' http://vision.artresearch.net:8888/search
+
+WORKING
+curl -X POST -d 'url=https://iiif.artresearch.net/iiif/2/zeri!151200%21150872_g.jpg/full/full/0/default.jpg' http://vision.artresearch.net:8888/search
+
+
+https://ids.lib.harvard.edu/ids/iiif/44405790/full/full/0/native.jpg
+
+
+403 FORBIDDEN
+curl -X POST -F 'url=https://ids.lib.harvard.edu/ids/iiif/44405790/full/full/0/native.jpg' http://vision.artresearch.net:8888/search
+
+WORKING:
+curl -X POST -F 'url=https://iiif.itatti.harvard.edu/iiif/2/yashiro!32044138547039_02.jpg/full/!700,700/0/default.jpg' http://vision.artresearch.net:8888/search
+
+
+curl -X POST -A 'Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0' -F 'url=https://ids.lib.harvard.edu/ids/iiif/44405790/full/800,/0/native.jpg' http://vision.artresearch.net:8888/search
+
+
+```
+
+
+
+
 **Match** makes it easy to search for images that look similar to each other. Using a state-of-the-art perceptual hash, it is invariant to scaling and 90 degree rotations. Its HTTP API is quick to integrate and flexible for a number of reverse image search applications. Kubernetes and Elasticsearch allow Match to scale to billions of images with ease while giving you full control over where your data is stored. Match uses the awesome [ascribe/image-match](https://github.com/ascribe/image-match) under the hood for most of the image search legwork.
 
 1. [Getting Started](#getting-started)
