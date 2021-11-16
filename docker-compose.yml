@@ -6,4 +6,5 @@ services:
       dockerfile: ./Dockerfile
     image: dsys/match:latest
     ports:
-    - 8888:8888
+      - 8888:8888
+    restart: always
